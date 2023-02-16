@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import * as TWEEN from "three/examples/jsm/libs/tween.module.min";
+import * as image_urls from "./images.json";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 // import fragment from "../shader/fragment.glsl";
@@ -119,11 +120,6 @@ export class Sketch {
     }
 
     setupImageURLs() {
-        let image_urls = [];
-        for (let i = 0; i < 72; i++) {
-            let url = "./assets/images/" + this.zeroPad(i + 1, 4) + ".png";
-            image_urls.push(url);
-        }
         console.log("n_images: " + this.n_images + ", image_urls: " + image_urls.length);
         this.shuffleArray(image_urls);
         this.image_urls = image_urls;
@@ -193,7 +189,6 @@ export class Sketch {
         this.raycaster.setFromCamera(this.mouse, this.camera);
         let intersects = this.raycaster.intersectObjects(this.scene.children);
         if (intersects.length > 0) {
-            console.log("n_intersects: " + intersects.length);
             let first_selectable_object = -1;
             for (let i = 0; i < intersects.length; i++) {
                 first_selectable_object = i;
@@ -307,7 +302,7 @@ export class Sketch {
     onWheel(event) {
         // event.preventDefault();
         this.scrollTargetW = event.wheelDelta * 0.1;
-        console.log("onWheel: " + this.scrollTargetW);
+        // console.log("onWheel: " + this.scrollTargetW);
     }
 
     onMouseDown(event) {
@@ -321,7 +316,7 @@ export class Sketch {
         this.mouse.y = -(event.clientY / this.height) * 2 + 1;
         this.scrollTargetX = -this.mouse.x;
         this.scrollTargetY = this.mouse.y;
-        console.log(this.mouse);
+        // console.log(this.mouse);
     }
 
     onTouchStart(event) {
@@ -332,7 +327,7 @@ export class Sketch {
         this.touch.y = 2.0 * touches.clientY / this.height;
         this.mouse.x = this.touch.x - 1.0;
         this.mouse.y = -this.touch.y + 1.0;
-        console.log(touches, this.touch, this.mouse);
+        // console.log(touches, this.touch, this.mouse);
     }
 
     onTouchMove(event) {
@@ -345,20 +340,20 @@ export class Sketch {
         // Save new location as current location.
         this.touch.x = 2.0 * touches.clientX / this.width;
         this.touch.y = 2.0 * touches.clientY / this.height;
-        console.log(this.currentScrollT);
+        // console.log(this.currentScrollT);
     }
 
     onTouchEnd(event) {
         event.preventDefault();
         if (this.touch_drag) {
-            console.log("--- DRAGGED");
+            // console.log("--- DRAGGED");
             // this.scrollT.x = 0.0;
             // this.scrollT.y = 0.0;
         }
         else {
             this.updateRaycaster();
             this.gotoObject();
-            console.log("--- CLICK");
+            // console.log("--- CLICK");
         }
         this.touch_drag = false;
     }

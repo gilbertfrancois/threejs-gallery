@@ -9,17 +9,11 @@ export function App() {
             <div className="controls">
                 <div className="label-control-grid">
                     <div className="label-control-grid-item">
-                        <label htmlFor="loop">Render loop</label>
-                    </div>
-                    <div className="label-control-grid-item">
                         <button
-                            id="loop"
+                            id="goto_blitzblit"
                             type="button"
-                            onClick={() => setIsPaused((oldVal) => !oldVal)}
-                        >
-                            {isPaused
-                                ? "Start render loop"
-                                : "Stop render loop"}
+                            onClick={() => window.location.href='https://www.blitzblit.com'}
+                        >Go to BLiTzBLiT
                         </button>
                     </div>
                 </div>
