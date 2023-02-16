@@ -3,7 +3,10 @@
 
 ### Project specific
 
-/assets/images/
+/assets/images/*.png
+/assets/images/*.jpg
+/assets/maps
+
 
 ### Linux ###
 *~
