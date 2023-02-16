@@ -4,7 +4,7 @@
     "description": "React - Three.js template",
     "scripts": {
         "dev": "npx parcel --host 0.0.0.0 --port 42347 src/index.html",
-        "prod": "parcel build src/index.html",
+        "prod": "npx parcel build src/index.html",
         "clean": "rm -rf dist; rm -rf node_modules; rm -rf .parcel-cache; rm package-lock.json",
         "cp": "cp -r ./assets ./dist/",
         "format": "prettier --write \"**/*.{html,js,jsx,json,ts,tsx}\""
